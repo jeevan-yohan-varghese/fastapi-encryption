@@ -8,6 +8,7 @@ from Crypto.Util.Padding import pad, unpad
 from dotenv import load_dotenv
 import os
 load_dotenv(".env")
+from fastapi.middleware.cors import CORSMiddleware
 
 app=FastAPI()
 from Crypto.Cipher import DES
@@ -23,7 +24,22 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from schema import CryptoRequest
 
 
+origins = [
+    "http://localhost:3000",
+    "https://cognosco.vercel.app",
+    "https://railway-gilt.vercel.app",
+    "https://cognoscotvm.azurewebsites.net",
+    "http://localhost:8000",
+    "104.196.232.237:443"
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # AES encryption function
 def encrypt_AES(key, iv, plaintext):
     # Create a Cipher object with AES algorithm and CBC mode
