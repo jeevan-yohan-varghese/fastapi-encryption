@@ -30,7 +30,8 @@ origins = [
     "https://railway-gilt.vercel.app",
     "https://cognoscotvm.azurewebsites.net",
     "http://localhost:8000",
-    "104.196.232.237:443"
+    "104.196.232.237:443",
+    "https://cloud-encryption-jyv.surge.sh"
 ]
 
 app.add_middleware(
