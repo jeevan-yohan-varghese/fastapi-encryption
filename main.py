@@ -94,4 +94,4 @@ async def decrypt(request:Request):
     return {"plain":plaintext.decode()}
 
 if __name__ == "__main__":
-    uvicorn.run(app,host="0.0.0.0",port=os.environ['PORT'])
+    uvicorn.run(app,host="0.0.0.0",port=os.getenv('PORT',default=5000))
